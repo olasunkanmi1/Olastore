@@ -1,10 +1,11 @@
+import React from 'react'
 
-function App() {
+const App = () => {
   return (
-    <>
-      Bismillahi
-    </>
-  );
+    <div>
+      okay baby
+    </div>
+  )
 }
 
-export default App;
+export default App
