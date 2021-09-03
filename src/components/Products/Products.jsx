@@ -1,10 +1,10 @@
 import React from 'react'
-import Grid from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import Product from './Product/Product'
 
 const products = [
-    { id: 1, name: 'Shoe', description: 'For sports.', price: "$40" },
-    { id: 2, name: 'macbook', description: 'Apple macbook.', price: "$270" }
+    { id: 1, name: 'Shoe', description: 'For sports.', price: "$40", image: 'https://cdn.vox-cdn.com/thumbor/6_tZq0BoeaVG1_yVI1ly29bCMVE=/0x0:2048x1280/920x613/filters:focal(861x477:1187x803):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69045732/Exbfpl2WgAAQkl8_resized.0.jpeg' },
+    { id: 2, name: 'macbook', description: 'Apple macbook.', price: "$270", image: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202011_GEO_IN?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1613672874000' }
 ]
 
 const Products = () => {
