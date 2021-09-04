@@ -3,25 +3,24 @@ import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './styles'
 
-import logo from '../../assets/logo.png'
+import logo from '../../assets/OlaStore.png'
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
     const classes = useStyles();
 
     return (
         <>
             <AppBar position='fixed' className={classes.appBar} color='inherit'>
                 <Toolbar>
-                    <Typography variant='h6' className='classes.title' color='inherit'>
-                        <img src={logo} alt="logo" height='40px' className='classes.image' />
-                        OlaStore
-                    </Typography>
+                    <img src={logo} alt="logo" height='40px' className='classes.image' />
+                    {/* <Typography variant='h6' className='classes.title' color='inherit'>
+                    </Typography> */}
 
                     <div className={classes.grow} />
 
                     <div className={classes.button}>
                         <IconButton aria-label='Show Cart Items' color='inherit'>
-                            <Badge badgeContent={2} color='secondary'>
+                            <Badge badgeContent={totalItems} color='secondary'>
                                 <ShoppingCart />
                             </Badge>
                         </IconButton>
