@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { commerce } from './lib/Commerce'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 //components
-import { Navbar, Products, Cart } from './components'
+import { Navbar, Products, Cart, Checkout } from './components'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -20,9 +21,27 @@ const App = () => {
   }
 
   const addProduct = async (productId, quantity) => {
-    const response = await commerce.cart.add(productId, quantity);
+    const { cart } = await commerce.cart.add(productId, quantity);
 
-    setCart(response.cart);
+    setCart(cart);
+  }
+
+  const updateProductQty = async (productId, quantity) => {
+    const { cart } = await commerce.cart.update(productId, { quantity });
+
+    setCart(cart);
+  }
+
+  const removeFromCart = async (productId) => {
+    const { cart } = await commerce.cart.remove(productId);
+
+    setCart(cart);
+  }
+
+  const emptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+
+    setCart(cart);
   }
 
   useEffect(() => {
@@ -34,11 +53,37 @@ const App = () => {
   console.log(cart);
 
   return (
-    <div>
-      <Navbar totalItems={cart.total_items} />
-      {/* <Products products={products} addToCart={addProduct} />   */}
-      <Cart cart={cart} />
-    </div>
+    <Router>
+      <Navbar 
+        totalItems={cart.total_items} 
+        totalCost={(cart.subtotal &&
+                    cart.subtotal.formatted_with_symbol) ||
+                    "00.00"} 
+      />
+      <Switch>
+        <Route exact path="/">
+          <Products products={products} addToCart={addProduct} />
+        </Route>
+
+        <Route exact path="/cart">
+          <Cart 
+            cart={cart} 
+            updateProductQty={updateProductQty}
+            removeFromCart={removeFromCart}
+            emptyCart={emptyCart}
+          />
+        </Route>
+        
+        <Route exact path="/checkout">
+          <Checkout 
+            cart={cart} 
+            updateProductQty={updateProductQty}
+            removeFromCart={removeFromCart}
+            emptyCart={emptyCart}
+          />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
