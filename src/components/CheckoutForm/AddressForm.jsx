@@ -24,7 +24,7 @@ const AddressForm = ({ checkoutToken }) => {
 
     useEffect(() => {
         fetchShippingCountries(checkoutToken.id);
-    }, [])
+    }, []);
 
     return (
         <>
