@@ -49,8 +49,8 @@ const App = () => {
     fetchCart();
   }, [])
 
-  console.log(products);
-  console.log(cart);
+  // console.log(products);
+  // console.log(cart);
 
   return (
     <Router>
@@ -76,10 +76,7 @@ const App = () => {
         
         <Route exact path="/checkout">
           <Checkout 
-            cart={cart} 
-            updateProductQty={updateProductQty}
-            removeFromCart={removeFromCart}
-            emptyCart={emptyCart}
+            cart={cart}
           />
         </Route>
       </Switch>
