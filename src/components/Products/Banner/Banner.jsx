@@ -1,24 +1,79 @@
 import React from 'react'
 import styled from 'styled-components'
 import bg from '../../../assets/bg.jpg'
+import { BsArrowRightShort } from 'react-icons/bs'
+import './banner.css'
 
 //styles
 const Container = styled.section`
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    height: 100vh;
+    height: calc(100vh - 80px);
     background-image: url(${bg});
     background-size: cover;
+    margin-top: 80px;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: .3;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        z-index: 5; 
+        
+        h1 {
+        font-size: 5rem;
+        }
+    }
+`
+
+const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    margin-top: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .5s;
+
+    &:hover {
+        background: midnightblue;
+        border: 2px solid midnightblue;
+    }
+`
+
+const Arrow = styled(BsArrowRightShort)`
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
+    transition: .5s;
 `
 
 const Banner = () => {
     return (
         <Container>
-            <h1>Welcome to Olastore</h1>
-            <h4>Your No 1 stop marketplace for quality gadgets</h4>
+            <div>
+                <h1>Welcome to OlaStore</h1>
+                <h4>Your One-Stop Marketplace for Quality Gadgets</h4>
+                <Button className='btn' onClick={() => window.location.replace("#shopping")}> SHOPPING <Arrow className='arrow' /> </Button>
+            </div>
         </Container>
     )
 }

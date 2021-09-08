@@ -6,18 +6,15 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
+
     html, body {
         width: 100vw;
         overflow-x: hidden;
         scroll-behavior: smooth;
     }
+
     a {
         text-decoration: none;
-    }
-    
-    contain {
-        width: 100vw;
-        padding: 0 12rem;
     }
 `
 
