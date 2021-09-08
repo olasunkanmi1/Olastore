@@ -2,16 +2,18 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import Product from './Product/Product'
 import Banner from './Banner/Banner'
-import useStyles from './styles'
+import styled from 'styled-components/macro';
 
+//styles
+const Container = styled.section`
+    
+`
 
 const Products = ({ products, addToCart }) => {
-    const classes = useStyles();
-
     return (
-        <main >
+        <Container>
             <Banner />
-            <div className={classes.toolbar} />
+            <div />
             <Grid container justify="center" spacing="4" id='shopping'>
                 {products.map((product) => (
                     <Grid item key={product.id} xs="12" sm="6" md="4" lg="3">
@@ -19,7 +21,7 @@ const Products = ({ products, addToCart }) => {
                     </Grid>
                 ))}
             </Grid>
-        </main>
+        </Container>
     )
 }
 

@@ -1,19 +1,19 @@
 import React from 'react';
-import { IconButton, Badge, } from '@material-ui/core'
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import styled from 'styled-components/macro';
+import './navbar.css'
 
-import logo from '../../assets/OlaStore.png'
+import logo from '../../assets/logo.png'
 
 //styles
 const Container = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 75px;
     width: 100%;
-    padding: 1rem 12rem;
+    padding: 0 12rem;
     z-index: 10;
     position: fixed;
     top: 0;
@@ -21,34 +21,61 @@ const Container = styled.section`
     border-bottom: 1px solid #ccc;
 
     @media screen and (max-width: 1200px) {
-        padding: 1rem 10rem;
+        padding: 0 10rem;
     }
     @media screen and (max-width: 1000px) {
-        padding: 1rem 8rem;
+        padding: 0 8rem;
     }
     @media screen and (max-width: 920px) {
-        padding: 1rem 6rem;
+        padding: 0 6rem;
     }
     @media screen and (max-width: 768px) {
-        padding: 1rem 5rem;
+        padding: 0 5rem;
     }
     @media screen and (max-width: 600px) {
-        padding: 1rem 4rem;
+        padding: 0 4rem;
     }
     @media screen and (max-width: 500px) {
-        padding: 1rem 3rem;
+        padding: 0 3rem;
     }
     @media screen and (max-width: 450px) {
-        padding: 1rem 2rem;
+        padding: 0 2rem;
+    }
+`
+
+const Button = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: .5s;
+    position: relative;
+
+    &:hover {
+        background: #eee;
     }
 `
 
 const Cart = styled(AiOutlineShoppingCart)`
     font-size: 25px;
-    
-    &:hover {
-        color: blue;
-    }
+    color: #000;
+`
+
+const Tag = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    color: #fff;
+    background: midnightblue;
+    font-size: 10px;
 `
 
 const Navbar = ({ totalItems, totalCost }) => {
@@ -62,15 +89,10 @@ const Navbar = ({ totalItems, totalCost }) => {
                 </Link>
                 
                 { location.pathname === '/' ? (
-                    <IconButton 
-                        aria-label='Show Cart Items'
-                        component={Link}
-                        to="/cart"
-                    >
-                        <Badge badgeContent={totalItems} color='secondary'>
-                            <Cart />
-                        </Badge>
-                    </IconButton>) : (
+                    <Button aria-label='Show Cart Items' to="/cart" className='btn'>
+                        <Cart className='cart' />cart
+                        <Tag>{totalItems}</Tag>
+                    </Button>) : (
                     <h4>
                         Total cost: <strong>{totalCost}</strong>
                     </h4>)

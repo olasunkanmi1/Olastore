@@ -5,14 +5,15 @@ import { BsArrowRightShort } from 'react-icons/bs'
 import './banner.css'
 
 //styles
-const Container = styled.section`
+const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 75px);
+    width: 100vw;
     background-image: url(${bg});
     background-size: cover;
-    margin-top: 80px;
+    margin-top: 75px;
     position: relative;
 
     &:before {
@@ -30,7 +31,8 @@ const Container = styled.section`
         justify-content: center;
         align-items: center;
         color: #fff;
-        z-index: 5; 
+        z-index: 5;
+        user-select: none; 
         
         h1 {
         font-size: 5rem;
@@ -51,11 +53,12 @@ const Button = styled.button`
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
-    transition: .5s;
+    transition: 1s;
 
     &:hover {
         background: midnightblue;
         border: 2px solid midnightblue;
+        transform: scale(.99);
     }
 `
 
