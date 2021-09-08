@@ -1,3 +1,11 @@
 .btn:hover .cart {
     color: midnightblue;
 }
+
+.h3 {
+    color: #000;
+}
+
+.btn:hover .h3 {
+    color: midnightblue;
+}

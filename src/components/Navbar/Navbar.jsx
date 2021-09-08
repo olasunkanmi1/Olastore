@@ -47,20 +47,14 @@ const Button = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
     transition: .5s;
     position: relative;
-
-    &:hover {
-        background: #eee;
-    }
 `
 
 const Cart = styled(AiOutlineShoppingCart)`
     font-size: 25px;
     color: #000;
+    margin-right: 5px;
 `
 
 const Tag = styled.div`
@@ -68,8 +62,8 @@ const Tag = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 5px;
-    top: 5px;
+    right: 38px;
+    top: -7px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -84,13 +78,14 @@ const Navbar = ({ totalItems, totalCost }) => {
     return (
         <contain>
             <Container>
-                <Link to='/'>
+                <Link to='/' css={`height: 50px;`}>
                     <img src={logo} alt="logo" height='50px' />
                 </Link>
                 
                 { location.pathname === '/' ? (
                     <Button aria-label='Show Cart Items' to="/cart" className='btn'>
-                        <Cart className='cart' />cart
+                        <Cart className='cart' />
+                        <h3 className='h3'>cart</h3>
                         <Tag>{totalItems}</Tag>
                     </Button>) : (
                     <h4>

@@ -1,27 +1,48 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
 import Product from './Product/Product'
 import Banner from './Banner/Banner'
 import styled from 'styled-components/macro';
 
 //styles
 const Container = styled.section`
-    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+    padding: 0 12rem;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0 10rem;
+    }
+    @media screen and (max-width: 1000px) {
+        padding: 0 8rem;
+    }
+    @media screen and (max-width: 920px) {
+        padding: 0 6rem;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 0 5rem;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 0 4rem;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 0 3rem;
+    }
+    @media screen and (max-width: 450px) {
+        padding: 0 2rem;
+    }
 `
 
 const Products = ({ products, addToCart }) => {
     return (
-        <Container>
+        <>
             <Banner />
-            <div />
-            <Grid container justify="center" spacing="4" id='shopping'>
+            <Container id='shopping'>
                 {products.map((product) => (
-                    <Grid item key={product.id} xs="12" sm="6" md="4" lg="3">
-                        <Product product={product} addToCart={addToCart} />
-                    </Grid>
+                    <Product product={product} addToCart={addToCart} />
                 ))}
-            </Grid>
-        </Container>
+            </Container>
+        </>
     )
 }
 
