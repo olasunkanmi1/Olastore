@@ -5,6 +5,7 @@ import bg from '../../../assets/bg.jpg'
 //styles
 const Container = styled.section`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #fff;

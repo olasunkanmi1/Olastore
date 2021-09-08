@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { commerce } from './lib/Commerce'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import GlobalStyles from "./GlobalStyles";
 
 //components
 import { Navbar, Products, Cart, Checkout } from './components'
@@ -54,6 +55,7 @@ const App = () => {
 
   return (
     <Router>
+      <GlobalStyles />
       <Navbar 
         totalItems={cart.total_items} 
         totalCost={(cart.subtotal &&
