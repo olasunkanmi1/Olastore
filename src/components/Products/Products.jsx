@@ -6,8 +6,9 @@ import styled from 'styled-components/macro';
 //styles
 const Container = styled.section`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 50px;
+    grid-template-columns: 250px 250px 250px;
+    // grid-gap: 50px;
+    justify-content: space-between;
     padding: 0 12rem;
 
     @media screen and (max-width: 1200px) {
