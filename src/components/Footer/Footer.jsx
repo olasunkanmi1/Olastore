@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import logo from '../../assets/logo2.png';
 import playstorelogo from '../../assets/playstore.svg'
 import applestorelogo from '../../assets/apple.svg';
+import { ImFacebook2 } from 'react-icons/im'
+import { FaInstagramSquare } from 'react-icons/fa'
+import { FaTwitterSquare } from 'react-icons/fa'
+import { FaWhatsappSquare } from 'react-icons/fa'
 
 //styles
 const Container = styled.section`
@@ -43,6 +47,10 @@ const Lnd = styled.div`
     @media screen and (max-width: 600px) {
         grid-template-columns: 1fr 1fr;
     }
+    
+    @media screen and (max-width: 405px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 const Logo = styled(Link)`
@@ -64,6 +72,11 @@ const Newsletter = styled.div`
 
     @media screen and (max-width: 600px) {
         grid-column: 1 / 3;
+    }
+
+    @media screen and (max-width: 405px) {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
     }
 
     p {
@@ -125,7 +138,11 @@ const Download = styled.div`
     
     @media screen and (max-width: 600px) {
         grid-column: 2 / 3;
-        grid-row: 1 / 2;
+    }
+
+    @media screen and (max-width: 405px) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
     }
 
     p {
@@ -158,22 +175,6 @@ const style = css`
         font-size: 13px;
          font-weight: 700;
     }
-    @media screen and (max-width: 350px) {
-        width: 120px;
-        height: 40px;
-        h5 {
-            font-size: 7px; 
-        }
-    
-        h4 {
-            font-size: 10px;
-             font-weight: 700;
-        }
-    }
-    @media screen and (max-width: 320px) {
-        grid-template-columns: .1fr .9fr;
-        width: 100px;
-    }
 ` 
 
 const PlayStore = styled(Link)`
@@ -184,10 +185,6 @@ const PlayStore = styled(Link)`
         width: 25px;
         height: 25px;
         margin-left: 5px;
-        @media screen and (max-width: 320px) {
-            width: 15px;
-            height: 15px;
-        }
     }
 `
 
@@ -197,10 +194,6 @@ const AppleStore = styled(Link)`
     img {
         width: 30px;
         height: 30px;
-        @media screen and (max-width: 320px) {
-            width: 20px;
-            height: 20px;
-        }
     }
 `
 
@@ -210,12 +203,14 @@ const Get = styled.section`
 `
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     color: #fff;
+
     div {
         display: flex;
         flex-direction: column;
+
         a {
             font-size: 13px;
             color: #fff;
@@ -228,15 +223,42 @@ const Wrapper = styled.div`
         font-weight: bold;
         font-size: 15px;
     }
-    @media screen and (max-width: 720px) {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+    
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr 1fr;
         grid-gap: 30px;
     }
-    
-    @media screen and (max-width: 360px) {
-        grid-template-columns: 1fr 1fr;
+`
+
+const Social = styled.section`
+    @media screen and (max-width: 700px) {
+        grid-column: 1 / 3;
     }
+`
+
+const Icon = styled.section`
+    display: flex;
+`
+
+const iconstyle = css`
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 20px;
+`
+
+const Ig = styled(FaInstagramSquare)`
+    ${iconstyle};
+`
+const Tw = styled(FaTwitterSquare)`
+    ${iconstyle};
+`
+const Fb = styled(ImFacebook2)`
+    ${iconstyle};
+`
+const Wa = styled(FaWhatsappSquare)`
+    ${iconstyle};
 `
 
 const Footer = () => {
@@ -281,22 +303,29 @@ const Footer = () => {
 
             <Wrapper>
                 <div>
-                    <h4>Company</h4>
+                    <h4>Know Us</h4>
                     <a href="/">About</a>
                     <a href="/">Career</a>
+                    <a href="/">Privacy Policy</a>
+                    <a href="/">Terms & Conditions</a>
                 </div>
 
                 <div>
                     <h4>Help</h4>
+                    <a href="/">Return Policy</a>
                     <a href="/">FAQs</a>
                     <a href="/">Contact</a>
                 </div>
-
-                <div>
-                    <h4>Legal</h4>
-                    <a href="/">Privacy Policy</a>
-                    <a href="/">Terms & Conditions</a>
-                </div>
+                
+                <Social>
+                    <h4>Social</h4>
+                    <Icon>
+                        <Ig />
+                        <Tw />
+                        <Wa />
+                        <Fb />
+                    </Icon>
+                </Social>
             </Wrapper>
         </Container>
     )
