@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 import styled from 'styled-components/macro';
 import './navbar.css'
 
@@ -51,6 +52,11 @@ const Button = styled(Link)`
     position: relative;
 `
 
+const Favorite = styled(AiFillHeart)`
+    font-size: 25px;
+    color: red;
+`
+
 const Cart = styled(AiOutlineShoppingCart)`
     font-size: 25px;
     color: #000;
@@ -81,6 +87,11 @@ const Navbar = ({ totalItems, totalCost }) => {
                 <Link to='/' css={`height: 50px;`}>
                     <img src={logo} alt="logo" height='50px' />
                 </Link>
+
+                <Button aria-label='Show Cart Items' to="/favorite" className='btn'>
+                    <Favorite className='favorite' />
+                    <Tag>{totalItems}</Tag>
+                </Button>
                 
                 { location.pathname === '/' ? (
                     <Button aria-label='Show Cart Items' to="/cart" className='btn'>
