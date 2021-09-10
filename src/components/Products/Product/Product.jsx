@@ -40,20 +40,21 @@ const Content = styled.div`
     flex-direction: column;
     padding: 10px;
 
-    h3 {
+    h4 {
         margin-bottom: 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
     }
 
     p {
         font-size: 13px;
+        margin-bottom: 5px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
-    }
-
-    h4 {
-        margin: 10px 0;
     }
 `
 
@@ -89,7 +90,7 @@ const Product = ({ product, addToCart }) => {
             </Media>
 
             <Content>
-                <h3>{product.name}</h3>
+                <h4>{product.name}</h4>
                 
                 <p dangerouslySetInnerHTML={ {__html: product.description} } />
                     
