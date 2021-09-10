@@ -13,28 +13,29 @@ import { FaWhatsappSquare } from 'react-icons/fa'
 //styles
 const Container = styled.section`
     background: midnightblue;
-    padding: 2rem 12rem;
+    padding: 2rem 12rem 4rem;
+    position: relative;
 
     @media screen and (max-width: 1200px) {
-        padding: 2rem 10rem;
+        padding: 2rem 10rem 4rem;
     }
     @media screen and (max-width: 1000px) {
-        padding: 2rem 8rem;
+        padding: 2rem 8rem 4rem;
     }
     @media screen and (max-width: 920px) {
-        padding: 2rem 6rem;
+        padding: 2rem 6rem 4rem;
     }
     @media screen and (max-width: 768px) {
-        padding: 2rem 5rem;
+        padding: 2rem 5rem 4rem;
     }
     @media screen and (max-width: 600px) {
-        padding: 2rem 4rem;
+        padding: 2rem 4rem 4rem;
     }
     @media screen and (max-width: 500px) {
-        padding: 2rem 3rem;
+        padding: 2rem 3rem 4rem;
     }
     @media screen and (max-width: 450px) {
-        padding: 2rem 2rem;
+        padding: 2rem 2rem 4rem;
     }
 `
 
@@ -261,6 +262,21 @@ const Wa = styled(FaWhatsappSquare)`
     ${iconstyle};
 `
 
+const Copyright = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    font-size: 15px;
+    width: 100vw;
+    color: midnightblue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-top: 2rem;
+`
+
 const Footer = () => {
     return (
         <Container>
@@ -327,6 +343,10 @@ const Footer = () => {
                     </Icon>
                 </Social>
             </Wrapper>
+
+            <Copyright>
+                &copy; OlaStore - 2021
+            </Copyright>
         </Container>
     )
 }
