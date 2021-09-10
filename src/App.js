@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import GlobalStyles from "./GlobalStyles";
 
 //components
-import { Navbar, Products, Cart, Checkout } from './components'
+import { Navbar, Footer, Products, Cart, Checkout } from './components'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -80,6 +80,7 @@ const App = () => {
           <Checkout cart={cart} />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   )
 }

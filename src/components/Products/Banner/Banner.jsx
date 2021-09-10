@@ -21,8 +21,8 @@ const Container = styled.div`
         position: absolute;
         width: 100%;
         height: 100%;
-        background: #000;
-        opacity: .3;
+        background: midnightblue;
+        opacity: .2;
     }
 
     div {
