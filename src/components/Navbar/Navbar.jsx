@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
 import styled from 'styled-components/macro';
 import './navbar.css'
 
@@ -44,17 +43,20 @@ const Container = styled.section`
     }
 `
 
+const Logo = styled(Link)`
+    height: 50px;
+
+    @media screen and (max-width: 360px) {
+        height: 35px;
+    }
+`
+
 const Button = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
     transition: .5s;
     position: relative;
-`
-
-const Favorite = styled(AiFillHeart)`
-    font-size: 25px;
-    color: red;
 `
 
 const Cart = styled(AiOutlineShoppingCart)`
@@ -84,14 +86,9 @@ const Navbar = ({ totalItems, totalCost }) => {
     return (
         <contain>
             <Container>
-                <Link to='/' css={`height: 50px;`}>
-                    <img src={logo} alt="logo" height='50px' />
-                </Link>
-
-                <Button aria-label='Show Cart Items' to="/favorite" className='btn'>
-                    <Favorite className='favorite' />
-                    <Tag>{totalItems}</Tag>
-                </Button>
+                <Logo to='/'>
+                    <img src={logo} alt="logo" height='100%' />
+                </Logo>
                 
                 { location.pathname === '/' ? (
                     <Button aria-label='Show Cart Items' to="/cart" className='btn'>

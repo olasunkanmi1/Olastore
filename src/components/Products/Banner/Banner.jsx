@@ -15,6 +15,29 @@ const Container = styled.div`
     background-size: cover;
     margin: 75px 0 80px;
     position: relative;
+    padding: 2rem 12rem;
+
+    @media screen and (max-width: 1200px) {
+        padding: 2rem 10rem;
+    }
+    @media screen and (max-width: 1000px) {
+        padding: 2rem 8rem;
+    }
+    @media screen and (max-width: 920px) {
+        padding: 2rem 6rem;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 2rem 5rem;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 2rem 4rem;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 2rem 3rem;
+    }
+    @media screen and (max-width: 450px) {
+        padding: 2rem 2rem;
+    }
 
     &:before {
         content: '';
@@ -35,7 +58,25 @@ const Container = styled.div`
         user-select: none; 
         
         h1 {
-        font-size: 5rem;
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 10px;
+
+            @media screen and (max-width: 1260px) {
+                font-size: 4rem;
+            }
+            
+            @media screen and (max-width: 1020px) {
+                font-size: 3rem;
+            }
+            
+            @media screen and (max-width: 350px) {
+                font-size: 2rem;
+            }
+        }
+
+        h4 {
+            text-align: center;
         }
     }
 `
