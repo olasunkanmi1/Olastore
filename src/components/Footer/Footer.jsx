@@ -36,8 +36,13 @@ const Container = styled.section`
 
 const Lnd = styled.div`
     display: grid;
-    grid-template-columns: .25fr .50fr .25fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 20px;
     margin-bottom: 50px;
+
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr 1fr;
+    }
 `
 
 const Logo = styled(Link)`
@@ -51,6 +56,15 @@ const Newsletter = styled.div`
     flex-direction: column;
     justify-content: center;
     color: #fff; 
+
+    @media screen and (max-width: 960px) {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+
+    @media screen and (max-width: 600px) {
+        grid-column: 1 / 3;
+    }
 
     p {
         margin-bottom: 10px;
@@ -103,6 +117,16 @@ const Download = styled.div`
     flex-direction: column;
     align-items: center;
     font-size: 13px;
+
+    @media screen and (max-width: 960px) {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+    }
+    
+    @media screen and (max-width: 600px) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
 
     p {
         color: #fff;
