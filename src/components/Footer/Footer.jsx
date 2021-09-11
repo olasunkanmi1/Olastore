@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import logo from '../../assets/logo2.png';
 import playstorelogo from '../../assets/playstore.svg'
 import applestorelogo from '../../assets/apple.svg';
-import { ImFacebook2 } from 'react-icons/im'
+import { FaFacebookSquare } from 'react-icons/fa'
 import { FaInstagramSquare } from 'react-icons/fa'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { FaWhatsappSquare } from 'react-icons/fa'
@@ -242,8 +242,8 @@ const Icon = styled.section`
 `
 
 const iconstyle = css`
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     color: #fff;
     cursor: pointer;
     margin-right: 20px;
@@ -255,7 +255,7 @@ const Ig = styled(FaInstagramSquare)`
 const Tw = styled(FaTwitterSquare)`
     ${iconstyle};
 `
-const Fb = styled(ImFacebook2)`
+const Fb = styled(FaFacebookSquare)`
     ${iconstyle};
 `
 const Wa = styled(FaWhatsappSquare)`
@@ -336,10 +336,10 @@ const Footer = () => {
                 <Social>
                     <h4>Social</h4>
                     <Icon>
-                        <Ig />
-                        <Tw />
-                        <Wa />
-                        <Fb />
+                        <Link to='/'> <Ig /> </Link>
+                        <Link to='/'> <Tw /> </Link>
+                        <Link to='/'> <Wa /> </Link>
+                        <Link to='/'> <Fb /> </Link>
                     </Icon>
                 </Social>
             </Wrapper>
