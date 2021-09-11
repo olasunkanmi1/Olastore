@@ -13,7 +13,7 @@ const Container = styled.div`
     width: 100vw;
     background-image: url(${bg});
     background-size: cover;
-    margin: 75px 0 80px;
+    margin-top: 75px;
     position: relative;
     padding: 2rem 12rem;
 

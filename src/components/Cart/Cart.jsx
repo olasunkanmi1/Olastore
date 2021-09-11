@@ -11,7 +11,7 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     const EmptyCart = () => {
         return (
             <Typography variant='subtitle1'>
-                Cart is empty
+                Your cart is empty
                 <Link to='/' className={classes.link}>Start Shopping</Link>
             </Typography>
         )
@@ -20,6 +20,7 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     const FilledCart = () => {
         return (
             <>
+                <Typography className={classes.title} variant='h3' gutterBottom>Your Shopping Cart ({cart.total_unique_items} items)</Typography>
                 <Grid container spacing={3}>
                     { cart.line_items.map((item) => (
                         <Grid item xs={12} sm={4} key={item.id}>
@@ -50,7 +51,6 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     return (
         <Container>
             <div className={classes.toolbar} />
-            <Typography className={classes.title} variant='h3' gutterBottom>Your Shopping Cart ({cart.total_unique_items} items)</Typography>
             { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
         </Container>
     )
