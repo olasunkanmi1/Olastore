@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import bg from '../../../assets/bg.jpg'
+import bg from '../../../assets/bg2.jpg'
 import { BsArrowRightShort } from 'react-icons/bs'
 import './banner.css'
 
