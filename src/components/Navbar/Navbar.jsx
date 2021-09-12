@@ -41,6 +41,16 @@ const Container = styled.section`
     @media screen and (max-width: 450px) {
         padding: 0 2rem;
     }
+
+    h4 {
+        @media screen and (max-width: 320px) {
+            font-size: 13px;
+        }
+        
+        @media screen and (max-width: 290px) {
+            font-size: 11px;
+        }
+    }
 `
 
 const Logo = styled(Link)`
@@ -97,7 +107,7 @@ const Navbar = ({ totalItems, totalCost }) => {
                         <Tag>{totalItems}</Tag>
                     </Button>) : (
                     <h4>
-                        Total cost: <strong>{totalCost}</strong>
+                        Total cost: {totalCost}
                     </h4>)
                 }
             </Container>
