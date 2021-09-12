@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { TiShoppingCart } from 'react-icons/ti';
 import styled from 'styled-components/macro';
 import './navbar.css'
 
@@ -69,8 +69,8 @@ const Button = styled(Link)`
     position: relative;
 `
 
-const Cart = styled(AiOutlineShoppingCart)`
-    font-size: 25px;
+const Cart = styled(TiShoppingCart)`
+    font-size: 30px;
     color: #000;
     margin-right: 5px;
 `
@@ -107,7 +107,7 @@ const Navbar = ({ totalItems, totalCost }) => {
                         <Tag>{totalItems}</Tag>
                     </Button>) : (
                     <h4>
-                        Total cost: {totalCost}
+                        Total: {totalCost}
                     </h4>)
                 }
             </Container>

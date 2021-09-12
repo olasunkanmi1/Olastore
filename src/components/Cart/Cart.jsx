@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Typography, Button, Grid } from '@material-ui/core'
+import {Typography, Button,} from '@material-ui/core'
 import useStyles from './styles'
 import styled from 'styled-components/macro';
 import box from '../../assets/box.png'
@@ -12,8 +12,9 @@ const EmptyCartContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60vh;
     padding: 0 12rem;
+    margin: 75px 0 50px;
+    width: 100%;
 
     @media screen and (max-width: 1200px) {
         padding: 0 10rem;
@@ -81,6 +82,8 @@ const Btn = styled(Link)`
 const FilledCartContainer = styled.section`
     display: flex;
     flex-direction: column;
+    margin-top: 90px;
+    width: 100%;
     padding: 0 12rem;
 
     @media screen and (max-width: 1200px) {
@@ -103,7 +106,17 @@ const FilledCartContainer = styled.section`
     }
     @media screen and (max-width: 450px) {
         padding: 0 2rem;
+    }  
+
+    h2 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 15px;
     }
+`
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
 `
 
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
@@ -124,14 +137,12 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     const FilledCart = () => {
         return (
             <FilledCartContainer>
-                <h4>Your Shopping Cart ({cart.total_unique_items} { cart.line_items.length = 1 ? 'Item' : 'Items'})</h4>
-                <Grid container spacing={3}>
+                <h2>Your Shopping Cart ({cart.total_unique_items} { cart.total_unique_items < 2 ? 'Item' : 'Items'})</h2>
+                <Container>
                     { cart.line_items.map((item) => (
-                        <Grid item xs={12} sm={4} key={item.id}>
-                            <CartItem item={item} removeFromCart={removeFromCart} updateProductQty={updateProductQty} />
-                        </Grid>
+                        <CartItem item={item} removeFromCart={removeFromCart} updateProductQty={updateProductQty} />
                     ))}
-                </Grid>
+                </Container>
 
                 <div className={classes.cardDetails}>
                     <Typography variant='h4'>
