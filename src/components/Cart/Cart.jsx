@@ -78,6 +78,34 @@ const Btn = styled(Link)`
     }
 `
 
+const FilledCartContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+    padding: 0 12rem;
+
+    @media screen and (max-width: 1200px) {
+        padding: 0 10rem;
+    }
+    @media screen and (max-width: 1000px) {
+        padding: 0 8rem;
+    }
+    @media screen and (max-width: 920px) {
+        padding: 0 6rem;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 0 5rem;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 0 4rem;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 0 3rem;
+    }
+    @media screen and (max-width: 450px) {
+        padding: 0 2rem;
+    }
+`
+
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     const classes = useStyles();
     // const isEmpty = !cart.line_items.length; //meaning cart is 0. same as cart.line_items.length == 0;
@@ -95,8 +123,8 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     
     const FilledCart = () => {
         return (
-            <>
-                <Typography className={classes.title} variant='h3' gutterBottom>Your Shopping Cart ({cart.total_unique_items} items)</Typography>
+            <FilledCartContainer>
+                <h4>Your Shopping Cart ({cart.total_unique_items} { cart.line_items.length = 1 ? 'Item' : 'Items'})</h4>
                 <Grid container spacing={3}>
                     { cart.line_items.map((item) => (
                         <Grid item xs={12} sm={4} key={item.id}>
@@ -118,7 +146,7 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
                         </div>
                     </Typography>
                 </div>
-            </>
+            </FilledCartContainer>
         )
     };
 
