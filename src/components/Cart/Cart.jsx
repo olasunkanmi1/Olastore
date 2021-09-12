@@ -1,7 +1,6 @@
 import React from 'react'
-import {Typography, Button,} from '@material-ui/core'
 import useStyles from './styles'
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import box from '../../assets/box.png'
 import CartItem from './CartItem/CartItem';
 import { Link } from "react-router-dom";
@@ -81,32 +80,38 @@ const Btn = styled(Link)`
 
 const FilledCartContainer = styled.section`
     display: flex;
-    flex-direction: column;
-    margin-top: 90px;
+    justify-content: space-between;
+    margin-top: 75px;
+    padding: 2rem 12rem;
     width: 100%;
-    padding: 0 12rem;
+    position: relative;
 
     @media screen and (max-width: 1200px) {
-        padding: 0 10rem;
+        padding: 2rem 10rem;
     }
     @media screen and (max-width: 1000px) {
-        padding: 0 8rem;
+        padding: 2rem 8rem;
     }
     @media screen and (max-width: 920px) {
-        padding: 0 6rem;
+        padding: 2rem 6rem;
     }
     @media screen and (max-width: 768px) {
-        padding: 0 5rem;
+        padding: 2rem 5rem;
     }
     @media screen and (max-width: 600px) {
-        padding: 0 4rem;
+        padding: 2rem 4rem;
     }
     @media screen and (max-width: 500px) {
-        padding: 0 3rem;
+        padding: 2rem 3rem;
     }
     @media screen and (max-width: 450px) {
-        padding: 0 2rem;
+        padding: 2rem 2rem;
     }  
+`
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
 
     h2 {
         border-bottom: 2px solid #eee;
@@ -114,9 +119,44 @@ const FilledCartContainer = styled.section`
     }
 `
 
-const Container = styled.div`
+const Proceed = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    right: 12rem;
+    transform: translateY(-50%);
+
+    h3 {
+        padding: 70px 0 10px;
+    }
+`
+
+const EmptyCheck = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+`
+
+const EmptyBtn = styled.div`
+    ${EmptyCheck};
+    background: red;
+`
+
+const CheckBtn = styled.div`
+    ${EmptyCheck};
+    background: midnightblue;
 `
 
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
@@ -137,26 +177,24 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     const FilledCart = () => {
         return (
             <FilledCartContainer>
-                <h2>Your Shopping Cart ({cart.total_unique_items} { cart.total_unique_items < 2 ? 'Item' : 'Items'})</h2>
                 <Container>
+                    <h2>Your Shopping Cart ({cart.total_unique_items} { cart.total_unique_items < 2 ? 'Item' : 'Items'})</h2>
                     { cart.line_items.map((item) => (
                         <CartItem item={item} removeFromCart={removeFromCart} updateProductQty={updateProductQty} />
                     ))}
                 </Container>
 
-                <div className={classes.cardDetails}>
-                    <Typography variant='h4'>
-                        Subtotal: { cart.subtotal.formatted_with_symbol }
-                        <div>
-                            <Button className={classes.emptyButton} color='secondary' size='large' type='button' variant='contained' onClick={emptyCart}>
-                                Empty Cart
-                            </Button>
-                            <Button component={Link} to="/checkout " className={classes.checkout} color='primary' size='large' type='button' variant='contained'>
-                                Checkout
-                            </Button>
-                        </div>
-                    </Typography>
-                </div>
+                <Proceed>
+                    <EmptyBtn className={classes.emptyButton} color='secondary' size='large' type='button' variant='contained' onClick={emptyCart}>
+                        Empty Cart
+                    </EmptyBtn>
+
+                    <h3> Total: { cart.subtotal.formatted_with_symbol } </h3>
+
+                    <CheckBtn component={Link} to="/checkout " className={classes.checkout} color='primary' size='large' type='button' variant='contained'>
+                        Checkout
+                    </CheckBtn>
+                </Proceed>
             </FilledCartContainer>
         )
     };
@@ -165,7 +203,6 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
 
     return (
         <Container>
-            <div className={classes.toolbar} />
             { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
         </Container>
     )

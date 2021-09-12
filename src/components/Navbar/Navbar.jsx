@@ -80,8 +80,8 @@ const Tag = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 38px;
-    top: -7px;
+    right: 39px;
+    top: -5px;
     width: 15px;
     height: 15px;
     border-radius: 50%;

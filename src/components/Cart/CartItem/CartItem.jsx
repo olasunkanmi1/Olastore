@@ -4,7 +4,8 @@ import { AiOutlineDelete } from 'react-icons/ai'
 
 //styles
 const Item = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 80px 250px 120px 90px 90px auto;
     border-bottom: 2px solid #eee;
 `
 
@@ -14,7 +15,6 @@ const Image = styled.div`
     align-items: center;
     border-right: 2px solid #eee;
     padding: 15px;
-    width: 80px;
     
     img {
         height: 40px;
@@ -24,17 +24,13 @@ const Image = styled.div`
 
 const Name = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 15px;
     border-right: 2px solid #eee;
-    width: 250px;
 `
 const Quantity = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 120px;
     padding: 15px;
     border-right: 2px solid #eee;
 `
@@ -55,7 +51,6 @@ const Unit = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
     padding: 15px;
     border-right: 2px solid #eee;
 `
@@ -64,7 +59,6 @@ const Total = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
     padding: 15px;
     border-right: 2px solid #eee;
 `
@@ -80,7 +74,8 @@ const RmvBtn = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    font-size: 15px;
+    padding: 10px;
     background: midnightblue;
     color: #fff;
     border-radius: 5px;
@@ -93,8 +88,8 @@ const RmvBtn = styled.div`
 `
 
 const Icon =  styled(AiOutlineDelete)`
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
 `
 
