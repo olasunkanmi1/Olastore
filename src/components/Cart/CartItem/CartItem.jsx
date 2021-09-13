@@ -41,6 +41,10 @@ const Item = styled.div`
     @media screen and (max-width: 480px) {
         grid-template-columns: 150px 120px auto;
     }
+
+    @media screen and (max-width: 400px) {
+        grid-template-columns: 100px 90px auto;
+    } 
 `
 
 const styles = css`
@@ -67,6 +71,7 @@ const Name = styled.div`
     @media screen and (max-width: 655px) {
         grid-column: 2 / 4;
         grid-row: 1 / 2;
+        border-right: none;
     }
 `
 const Quantity = styled.div`
@@ -111,6 +116,12 @@ const Total = styled.div`
     @media screen and (max-width: 655px) {
         border-top: 2px solid #eee;
     }
+
+    @media screen and (max-width: 320px) {
+        grid-column: 2 / 4;
+        grid-row: 2 / 3;
+        border-right: none;
+    } 
 `
 
 const Remove = styled.div`
@@ -120,6 +131,11 @@ const Remove = styled.div`
     @media screen and (max-width: 655px) {
         border-top: 2px solid #eee;
     }
+
+    @media screen and (max-width: 320px) {
+        grid-column: 1 / 4;
+        grid-row: 3 / 4;
+    } 
 `
 
 const RmvBtn = styled.div`
@@ -139,9 +155,14 @@ const RmvBtn = styled.div`
 
     h4 {
         font-size: 15px;
+
         @media screen and (max-width: 1040px) {
             display: none;
         }
+
+        @media screen and (max-width: 320px) {
+            display: flex;
+        } 
     }
 `
 
@@ -153,6 +174,10 @@ const Icon =  styled(AiOutlineDelete)`
     @media screen and (max-width: 1040px) {
         margin-right: 0;
     }
+
+    @media screen and (max-width: 320px) {
+        margin-right: 10px;
+    } 
 `
 
 const CartItem = ({ item, removeFromCart, updateProductQty }) => {

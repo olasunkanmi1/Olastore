@@ -1,5 +1,4 @@
 import React from 'react'
-import useStyles from './styles'
 import styled, { css } from 'styled-components/macro';
 import box from '../../assets/box.png'
 import CartItem from './CartItem/CartItem';
@@ -108,14 +107,26 @@ const FilledCartContainer = styled.section`
     }  
 
     h2 {
-        border-bottom: 2px solid #eee;
         padding-bottom: 15px;
+
+        @media screen and (max-width: 500px) {
+            font-size: 20px;
+        } 
+        
+        @media screen and (max-width: 400px) {
+            font-size: 15px;
+        } 
+        
+        @media screen and (max-width: 320px) {
+            font-size: 12px;
+        } 
     }
 `
 
 const Info = styled.div`
     display: grid;
     grid-template-columns: 400px 130px 90px 90px auto;
+    border-top: 2px solid #eee;
 
     p {
         font-size: 12px;
@@ -170,6 +181,11 @@ const Proceed = styled.div`
         flex-direction: row;
         justify-content: space-between;
     }
+
+    @media screen and (max-width: 650px) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 `
 
 const Checkout = styled.div`
@@ -177,9 +193,21 @@ const Checkout = styled.div`
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-    h3 {
-        padding: 0 0 20px;
+    @media screen and (max-width: 1450px) {
+        width: 300px;
     }
+
+    @media screen and (max-width: 650px) {
+        margin-top: 30px;
+        width: 100%;
+    }
+`
+
+const Tt = styled.div`
+    padding: 0 0 20px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
 `
 
 const EmptyCheck = css`
@@ -190,8 +218,13 @@ const EmptyCheck = css`
     cursor: pointer;
     color: #fff;
     width: 100%;
+    height: auto;
     border-radius: 5px;
     cursor: pointer;
+
+    &:hover {
+        transform: scale(.95);
+    }
 `
 
 const EmptyBtn = styled.div`
@@ -201,8 +234,14 @@ const EmptyBtn = styled.div`
 
     @media screen and (max-width: 1450px) {
         width: auto;
-        margin: 35px 50px 35px 0;
+        margin: 35px 0 0;
     }
+    
+    @media screen and (max-width: 650px) {
+        width: 100%;
+        margin: 0 ;
+    }
+    
 `
 
 const CheckBtn = styled.div`
@@ -211,7 +250,6 @@ const CheckBtn = styled.div`
 `
 
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
-    const classes = useStyles();
     // const isEmpty = !cart.line_items.length; //meaning cart is 0. same as cart.line_items.length == 0;
     
     const EmptyCart = () => {
@@ -220,7 +258,7 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
                 <img src={box} alt="empty-box" />
                 <h2>Your cart is empty</h2>
                 <p>Looks like you haven't added any items to your cart yet.</p>
-                <Btn to='/' className={classes.link}>Continue Shopping</Btn>
+                <Btn to='/'>Continue Shopping</Btn>
             </EmptyCartContainer>
         )
     };
@@ -244,13 +282,13 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
                     </Container>
 
                     <Proceed>
-                        <EmptyBtn className={classes.emptyButton} color='secondary' size='large' type='button' variant='contained' onClick={emptyCart}>
+                        <EmptyBtn onClick={emptyCart}>
                             Empty Cart
                         </EmptyBtn>
                         
                         <Checkout>
-                            <h3> Total: { cart.subtotal.formatted_with_symbol } </h3>
-                            <CheckBtn component={Link} to="/checkout " className={classes.checkout} color='primary' size='large' type='button' variant='contained'>
+                            <Tt> <h3>Total:</h3> <h3>{ cart.subtotal.formatted_with_symbol }</h3> </Tt>
+                            <CheckBtn component={Link} to="/checkout">
                                 Checkout
                             </CheckBtn>
                         </Checkout>
