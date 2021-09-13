@@ -9,3 +9,7 @@
 .btn:hover .h3 {
     color: midnightblue;
 }
+
+.th:nth-child() {
+    
+}

@@ -80,11 +80,10 @@ const Btn = styled(Link)`
 
 const FilledCartContainer = styled.section`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-top: 75px;
     padding: 2rem 12rem;
     width: 100%;
-    position: relative;
 
     @media screen and (max-width: 1200px) {
         padding: 2rem 10rem;
@@ -107,11 +106,6 @@ const FilledCartContainer = styled.section`
     @media screen and (max-width: 450px) {
         padding: 2rem 2rem;
     }  
-`
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
 
     h2 {
         border-bottom: 2px solid #eee;
@@ -119,21 +113,79 @@ const Container = styled.div`
     }
 `
 
+const Info = styled.div`
+    display: grid;
+    grid-template-columns: 400px 130px 90px 90px auto;
+    border-bottom: 2px solid #eee; 
+
+    &:nth-child(3) {
+        @media screen and (max-width: 740px) {
+            display: none;
+        }
+    }
+
+    p {
+        font-size: 12px;
+        font-weight: bold;
+        padding: 15px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 2px solid #eee;
+    }
+
+    @media screen and (max-width: 1250px) {
+        grid-template-columns: 330px 130px 90px 90px auto;
+    }
+
+    @media screen and (max-width: 1100px) {
+        grid-template-columns: 280px 130px 90px 90px auto;
+    }
+
+    @media screen and (max-width: 850px) {
+        grid-template-columns: 230px 120px 85px 85px auto;
+    }
+
+    @media screen and (max-width: 740px) {
+        grid-template-columns: 270px 120px auto;
+    }
+`
+
+const Wrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1450px) {
+        flex-direction: column;
+    }
+`
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 1450px) {
+        margin-bottom: 30px;
+    }
+`
+
 const Proceed = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
+    @media screen and (max-width: 1450px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+`
+
+const Checkout = styled.div`
     padding: 10px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 200px;
-    position: absolute;
-    top: 50%;
-    right: 12rem;
-    transform: translateY(-50%);
 
     h3 {
-        padding: 70px 0 10px;
+        padding: 0 0 20px;
     }
 `
 
@@ -152,6 +204,12 @@ const EmptyCheck = css`
 const EmptyBtn = styled.div`
     ${EmptyCheck};
     background: red;
+    margin: 35px 0;
+
+    @media screen and (max-width: 1450px) {
+        width: auto;
+        margin: 35px 50px 35px 0;
+    }
 `
 
 const CheckBtn = styled.div`
@@ -177,24 +235,34 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     const FilledCart = () => {
         return (
             <FilledCartContainer>
-                <Container>
-                    <h2>Your Shopping Cart ({cart.total_unique_items} { cart.total_unique_items < 2 ? 'Item' : 'Items'})</h2>
-                    { cart.line_items.map((item) => (
-                        <CartItem item={item} removeFromCart={removeFromCart} updateProductQty={updateProductQty} />
-                    ))}
-                </Container>
+                <h2>Your Shopping Cart ({cart.total_unique_items} { cart.total_unique_items < 2 ? 'Item' : 'Items'})</h2>
+                <Info>
+                    <p>GADGET</p>
+                    <p>QUANTITY</p>
+                    <p>UNIT</p>
+                    <p>SUBTOTAL</p>
+                </Info>
 
-                <Proceed>
-                    <EmptyBtn className={classes.emptyButton} color='secondary' size='large' type='button' variant='contained' onClick={emptyCart}>
-                        Empty Cart
-                    </EmptyBtn>
+                <Wrap>
+                    <Container>
+                        { cart.line_items.map((item) => (
+                            <CartItem item={item} removeFromCart={removeFromCart} updateProductQty={updateProductQty} />
+                        ))}
+                    </Container>
 
-                    <h3> Total: { cart.subtotal.formatted_with_symbol } </h3>
-
-                    <CheckBtn component={Link} to="/checkout " className={classes.checkout} color='primary' size='large' type='button' variant='contained'>
-                        Checkout
-                    </CheckBtn>
-                </Proceed>
+                    <Proceed>
+                        <EmptyBtn className={classes.emptyButton} color='secondary' size='large' type='button' variant='contained' onClick={emptyCart}>
+                            Empty Cart
+                        </EmptyBtn>
+                        
+                        <Checkout>
+                            <h3> Total: { cart.subtotal.formatted_with_symbol } </h3>
+                            <CheckBtn component={Link} to="/checkout " className={classes.checkout} color='primary' size='large' type='button' variant='contained'>
+                                Checkout
+                            </CheckBtn>
+                        </Checkout>
+                    </Proceed>
+                </Wrap>
             </FilledCartContainer>
         )
     };
