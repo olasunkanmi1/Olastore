@@ -10,6 +10,6 @@
     color: midnightblue;
 }
 
-.th:nth-child() {
-    
+.th:last-child {
+
 }

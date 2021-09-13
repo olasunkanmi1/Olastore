@@ -6,7 +6,9 @@ import { AiOutlineDelete } from 'react-icons/ai'
 const Item = styled.div`
     display: grid;
     grid-template-columns: 100px 300px 130px 90px 90px auto;
-    border-bottom: 2px solid #eee; 
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     @media screen and (max-width: 1250px) {
         grid-template-columns: 80px 250px 130px 90px 90px auto;
@@ -21,7 +23,23 @@ const Item = styled.div`
     }
     
     @media screen and (max-width: 740px) {
-        grid-template-columns: 70px 200px 120px auto;
+        grid-template-columns: 70px 200px 120px 85px auto;
+    }
+
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 70px 160px 120px 85px auto;
+    }
+    
+    @media screen and (max-width: 655px) {
+        grid-template-columns: 150px 200px auto;
+    }
+    
+    @media screen and (max-width: 550px) {
+        grid-template-columns: 150px 150px auto;
+    }
+    
+    @media screen and (max-width: 480px) {
+        grid-template-columns: 150px 120px auto;
     }
 `
 
@@ -37,20 +55,29 @@ const Image = styled.div`
    ${styles}; 
     
     img {
-        height: 40px;
-        width: 40px;
+        height: 60px;
+        width: 60px;
     }
 `
 
 const Name = styled.div`
     ${styles}; 
     justify-content: flex-start;
+
+    @media screen and (max-width: 655px) {
+        grid-column: 2 / 4;
+        grid-row: 1 / 2;
+    }
 `
 const Quantity = styled.div`
     ${styles}; 
 
     h4 {
         padding: 0 10px;
+    }
+
+    @media screen and (max-width: 655px) {
+        border-top: 2px solid #eee;
     }
 `
 
@@ -72,19 +99,26 @@ const Unit = styled.div`
     align-items: center;
     padding: 15px;
     border-right: 2px solid #eee;
+
+    @media screen and (max-width: 740px) {
+        display: none;
+    }
 `
 
 const Total = styled.div`
     ${styles}; 
+
+    @media screen and (max-width: 655px) {
+        border-top: 2px solid #eee;
+    }
 `
 
 const Remove = styled.div`
     ${styles}; 
     border-right: none;
 
-    @media screen and (max-width: 740px) {
-        // grid-column: 4 / 5;
-        // grid-row: 1 / 2;
+    @media screen and (max-width: 655px) {
+        border-top: 2px solid #eee;
     }
 `
 

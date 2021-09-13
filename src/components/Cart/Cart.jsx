@@ -116,13 +116,6 @@ const FilledCartContainer = styled.section`
 const Info = styled.div`
     display: grid;
     grid-template-columns: 400px 130px 90px 90px auto;
-    border-bottom: 2px solid #eee; 
-
-    &:nth-child(3) {
-        @media screen and (max-width: 740px) {
-            display: none;
-        }
-    }
 
     p {
         font-size: 12px;
@@ -147,7 +140,7 @@ const Info = styled.div`
     }
 
     @media screen and (max-width: 740px) {
-        grid-template-columns: 270px 120px auto;
+        display: none;
     }
 `
 
