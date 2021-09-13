@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Product from './Product/Product'
 import Banner from './Banner/Banner'
 import styled from 'styled-components/macro';
@@ -56,6 +56,10 @@ const Container = styled.section`
 `
 
 const Products = ({ products, addToCart }) => {
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
+    
     return (
         <>
             <Banner />

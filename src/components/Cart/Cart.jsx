@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { css } from 'styled-components/macro';
 import box from '../../assets/box.png'
 import CartItem from './CartItem/CartItem';
@@ -251,6 +251,9 @@ const CheckBtn = styled.div`
 
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     // const isEmpty = !cart.line_items.length; //meaning cart is 0. same as cart.line_items.length == 0;
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
     
     const EmptyCart = () => {
         return (
