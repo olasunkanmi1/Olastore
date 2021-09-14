@@ -57,7 +57,7 @@ const Container = styled.section`
 
 const Products = ({ products, addToCart }) => {
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo({top: 0, behavior: 'auto'})
     }, [])
     
     return (

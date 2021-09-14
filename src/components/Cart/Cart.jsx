@@ -253,7 +253,7 @@ const CheckBtn = styled(Link)`
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     // const isEmpty = !cart.line_items.length; //meaning cart is 0. same as cart.line_items.length == 0;
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo({top: 0, behavior: 'auto'})
     }, [])
     
     const EmptyCart = () => {
