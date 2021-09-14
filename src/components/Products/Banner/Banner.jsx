@@ -116,7 +116,7 @@ const Banner = () => {
             <div>
                 <h1>Welcome to OlaStore</h1>
                 <h4>Your One-Stop Marketplace for Quality Gadgets</h4>
-                <Button className='btn' onClick={() => window.scrollBy({top: 100 * window.innerHeight / 100, behavior: 'smooth'})}> SHOPPING <Arrow className='arrow' /> </Button>
+                <Button className='btn' onClick={() => window.location.replace("#shopping")}> SHOPPING <Arrow className='arrow' /> </Button>
             </div>
         </Container>
     )
