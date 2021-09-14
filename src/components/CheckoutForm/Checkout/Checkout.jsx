@@ -8,18 +8,18 @@ import PaymentForm from '../PaymentForm';
 const steps = [ 'Shipping address', 'Payment details' ];
 
 const Checkout = ({ cart }) => {
+    const [activeStep, setActiveStep] = useState(0); 
+    const [checkoutToken, setCheckoutToken] = useState(null);
     const classes = useStyles();
  
-    const [activeStep, setActiveStep] = useState(0);
-    const [checkoutToken, setCheckoutToken] = useState(null);
 
     useEffect(() => {
 
         const generateToken = async () => {
             try {
-                const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
+                const token = await commerce.checkout.generateToken( cart.id, { type: 'cart' } );
 
-                console.log(token);
+                console.log(token); 
  
                 setCheckoutToken(token);
             } catch (error) {
@@ -28,7 +28,7 @@ const Checkout = ({ cart }) => {
         }
 
         generateToken();
-    }, [])
+    }, []);
 
     const Confirmation = () => (
         <div>

@@ -221,6 +221,7 @@ const EmptyCheck = css`
     height: auto;
     border-radius: 5px;
     cursor: pointer;
+    transition: .5s;
 
     &:hover {
         transform: scale(.95);
@@ -244,7 +245,7 @@ const EmptyBtn = styled.div`
     
 `
 
-const CheckBtn = styled.div`
+const CheckBtn = styled(Link)`
     ${EmptyCheck};
     background: midnightblue;
 `
@@ -286,12 +287,12 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
 
                     <Proceed>
                         <EmptyBtn onClick={emptyCart}>
-                            Empty Cart
+                            Clear Cart
                         </EmptyBtn>
                         
                         <Checkout>
                             <Tt> <h3>Total:</h3> <h3>{ cart.subtotal.formatted_with_symbol }</h3> </Tt>
-                            <CheckBtn component={Link} to="/checkout">
+                            <CheckBtn to="/checkout">
                                 Checkout
                             </CheckBtn>
                         </Checkout>

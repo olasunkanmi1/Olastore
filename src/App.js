@@ -48,10 +48,10 @@ const App = () => {
   useEffect(() => {
     fetchProducts();
     fetchCart();
-  }, [])
+  }, []);
 
-  // console.log(products);
-  // console.log(cart);
+  console.log(products);
+  console.log(cart);
 
   return (
     <Router>

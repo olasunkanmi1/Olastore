@@ -16,14 +16,14 @@ const AddressForm = ({ checkoutToken }) => {
 
     const methods = useForm();
 
-    const fetchShippingCountries = async (checkoutToken) => {
-        const { countries } = await commerce.services.localeListShippingCountries(checkoutToken.id);
+    const fetchShippingCountries = async (checkoutTokenId) => {
+        const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
 
         setShippingCountries(countries);
     };
 
     useEffect(() => {
-        fetchShippingCountries(checkoutToken.id);
+        // fetchShippingCountries(checkoutToken.id);
     }, []);
 
     return (
