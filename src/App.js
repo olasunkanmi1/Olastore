@@ -50,8 +50,8 @@ const App = () => {
     fetchCart();
   }, []);
 
-  console.log(products);
-  console.log(cart);
+  // console.log(products);
+  // console.log(cart);
 
   return (
     <Router>
