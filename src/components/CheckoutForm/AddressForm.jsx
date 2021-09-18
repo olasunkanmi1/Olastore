@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core'
+import { Link } from 'react-router-dom';
+
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { commerce } from '../../lib/Commerce';
 
 import FormInput from './CustomTextField';
 
-const AddressForm = ({ checkoutToken }) => {
+const AddressForm = ({ checkoutToken, next }) => {
     const methods = useForm();
 
     const [shippingCountries, setShippingCountries] = useState([]);
@@ -62,7 +64,7 @@ const AddressForm = ({ checkoutToken }) => {
         <>
             <Typography variant='h6' gutterBottom>Shipping Address</Typography>
             <FormProvider { ...methods }>
-                <form onSubmit=''>
+                <form onSubmit={methods.handleSubmit((data) => next({ ...data, shippingCountry, shippingSubdivision, setShippingOption }))}>
                     <Grid container spacing={3}>
                         <FormInput name='firstName' label='FirstName' />
                         <FormInput name='lastName' label='Last Name' />
@@ -105,6 +107,11 @@ const AddressForm = ({ checkoutToken }) => {
                         </Grid>
 
                     </Grid>
+                    <br />
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <Button variant='outlined' component={Link} to='/cart'>Back to Cart</Button>
+                        <Button variant='contained' type='submit' color='primary'>Next</Button>
+                    </div>
                 </form>
             </FormProvider>
         </>
