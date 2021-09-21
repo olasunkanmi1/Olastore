@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import bg from '../../../assets/bg2.jpg'
 import { BsArrowRightShort } from 'react-icons/bs'
 import './banner.css'
+
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 //styles
 const Container = styled.div`
@@ -111,12 +114,18 @@ const Arrow = styled(BsArrowRightShort)`
 `
 
 const Banner = () => {
+    useEffect(() => {
+        Aos.init({
+            duration: 1500,
+        });
+    }, []);
+
     return (
         <Container>
             <div>
-                <h1>Welcome to OlaStore</h1>
-                <h4>Your One-Stop Marketplace for Quality Gadgets</h4>
-                <Button className='btn' onClick={() => window.location.replace("#shopping")}> SHOPPING <Arrow className='arrow' /> </Button>
+                <h1 data-aos='fade-down'>Welcome to OlaStore</h1>
+                <h4 data-aos='zoom-in'>Your One-Stop Marketplace for Quality Gadgets</h4>
+                <Button data-aos='fade-up' className='btn' onClick={() => window.location.replace("#shopping")}> SHOPPING <Arrow className='arrow' /> </Button>
             </div>
         </Container>
     )

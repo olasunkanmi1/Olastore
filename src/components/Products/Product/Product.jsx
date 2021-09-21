@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdAddShoppingCart } from 'react-icons/md'
 import styled from 'styled-components/macro';
+
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 //styles
 const Card = styled.div`
@@ -83,8 +86,12 @@ const AddCart = styled(MdAddShoppingCart)`
 `
 
 const Product = ({ product, addToCart }) => {
+    useEffect(() => {
+        Aos.init({duration: 1500});
+    }, [])
+
     return (
-        <Card>
+        <Card  data-aos='fade-up'>
             <Media>
                 <img src={product.media.source} alt="product" />
             </Media>

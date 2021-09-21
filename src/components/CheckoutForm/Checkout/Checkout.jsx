@@ -83,19 +83,18 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       </>
     ) : isFinished ? (
         <>
-        <div>
-          <Typography variant="h5">
-            Thank you for your purchase
-          </Typography>
-          <Divider className={classes.divider} />
-        </div>
-        <br />
-        <Button variant="outlined" type="button" component={Link} to="/">
-          Back to Home
-        </Button>
-      </>
-    ) : 
-    (
+            <div>
+                <Typography variant="h5">
+                    Thank you for your purchase
+                </Typography>
+                <Divider className={classes.divider} />
+            </div>
+            <br />
+            <Button variant="outlined" type="button" component={Link} to="/">
+            Back to Home
+            </Button>
+        </>
+    ) : (
       <div className={classes.spinner}>
         <CircularProgress />
       </div>

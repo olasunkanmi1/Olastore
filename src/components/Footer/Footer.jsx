@@ -278,6 +278,7 @@ const Copyright = styled.section`
 `
 
 const Footer = () => {
+
     return (
         <Container>
             <Lnd>
