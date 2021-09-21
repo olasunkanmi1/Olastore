@@ -87,7 +87,7 @@ const AddCart = styled(MdAddShoppingCart)`
 
 const Product = ({ product, addToCart }) => {
     useEffect(() => {
-        Aos.init({duration: 1500});
+        Aos.init({duration: 1000});
     }, [])
 
     return (
