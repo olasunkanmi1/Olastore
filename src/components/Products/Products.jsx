@@ -3,6 +3,8 @@ import Product from './Product/Product'
 import Banner from './Banner/Banner'
 import styled from 'styled-components/macro';
 
+import { CircularProgress } from "@material-ui/core";
+
 //styles
 const Container = styled.section`
     display: grid;
@@ -55,6 +57,13 @@ const Container = styled.section`
     }
 `
 
+const Loading = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+`
+
 const Products = ({ products, addToCart }) => {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'auto'});
@@ -63,11 +72,13 @@ const Products = ({ products, addToCart }) => {
     return (
         <>
             <Banner />
-            <Container id='shopping'>
-                {products.map((product) => (
-                    <Product product={product} addToCart={addToCart} />
-                ))}
-            </Container>
+            {!products ? (<Loading> <CircularProgress /> </Loading>) :
+                (<Container id='shopping'>
+                    {products.map((product) => (
+                        <Product product={product} addToCart={addToCart} />
+                    ))}
+                </Container>) 
+            }
         </>
     )
 }
