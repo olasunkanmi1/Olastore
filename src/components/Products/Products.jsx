@@ -68,17 +68,17 @@ const Products = ({ products, addToCart }) => {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'auto'});
     }, [])
+
+    if(!products) return <Loading> <CircularProgress /> </Loading>;
     
     return (
         <>
             <Banner />
-            {!products ? (<Loading> <CircularProgress /> </Loading>) :
-                (<Container id='shopping'>
-                    {products.map((product) => (
-                        <Product product={product} addToCart={addToCart} />
-                    ))}
-                </Container>) 
-            }
+            <Container id='shopping'>
+                {products.map((product) => (
+                    <Product product={product} addToCart={addToCart} />
+                ))}
+            </Container>
         </>
     )
 }
