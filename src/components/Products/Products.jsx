@@ -57,11 +57,11 @@ const Container = styled.section`
     }
 `
 
-const Loading = styled.div`
+const LoadingContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 200px;
 `
 
 const Products = ({ products, addToCart }) => {
@@ -69,16 +69,26 @@ const Products = ({ products, addToCart }) => {
         window.scrollTo({top: 0, behavior: 'auto'});
     }, [])
 
-    if(!products) return <Loading> <CircularProgress /> </Loading>;
-    
-    return (
-        <>
-            <Banner />
+    const Loading = () => {
+        return (
+            <LoadingContainer> <CircularProgress /> </LoadingContainer>
+        )
+    }
+
+    const Show = () => {
+        return (
             <Container id='shopping'>
                 {products.map((product) => (
                     <Product product={product} addToCart={addToCart} />
                 ))}
             </Container>
+        )
+    }
+    
+    return (
+        <>
+            <Banner />
+            { !products.length ? <Loading /> : <Show />}
         </>
     )
 }
