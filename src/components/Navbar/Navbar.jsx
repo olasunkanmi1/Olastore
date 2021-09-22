@@ -97,7 +97,7 @@ const Navbar = ({ totalItems, totalCost }) => {
         <contain>
             <Container>
                 <Logo to='/'>
-                    <img src={logo} alt="logo" height='100%' />
+                    {/* <img src={logo} alt="logo" height='100%' /> */}
                 </Logo>
                 
                 { location.pathname === '/' ? (
