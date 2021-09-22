@@ -6,15 +6,19 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 //styles
+const Container = styled.div`
+    margin-bottom: 40px;
+    border-radius: 5px;
+`
+
 const Card = styled.div`
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 100%;
-    margin-bottom: 40px;
-    border-radius: 5px;
     cursor: pointer;
     transition: .5s;
+    border-radius: 5px;
 
     &:hover {
         box-shadow: 0px 0px 10px 5px midnightblue;
@@ -87,27 +91,29 @@ const AddCart = styled(MdAddShoppingCart)`
 
 const Product = ({ product, addToCart }) => {
     useEffect(() => {
-        Aos.init({duration: 1000});
+        Aos.init({duration: 1500});
     }, [])
 
     return (
-        <Card  data-aos='fade-up'>
-            <Media>
-                <img src={product.media.source} alt="product" />
-            </Media>
+        <Container data-aos='fade-up'>
+            <Card>
+                <Media>
+                    <img src={product.media.source} alt="product" />
+                </Media>
 
-            <Content>
-                <h4>{product.name}</h4>
-                
-                <p dangerouslySetInnerHTML={ {__html: product.description} } />
+                <Content>
+                    <h4>{product.name}</h4>
                     
-                <h4>{product.price.formatted_with_symbol}</h4>
+                    <p dangerouslySetInnerHTML={ {__html: product.description} } />
+                        
+                    <h4>{product.price.formatted_with_symbol}</h4>
 
-                <Button aria-label='Add to Cart' onClick={() => addToCart(product.id, 1)}>
-                    <AddCart /> ADD TO CART
-                </Button>
-            </Content>
-        </Card>
+                    <Button aria-label='Add to Cart' onClick={() => addToCart(product.id, 1)}>
+                        <AddCart /> ADD TO CART
+                    </Button>
+                </Content>
+            </Card>
+        </Container>
     )
 }
                
