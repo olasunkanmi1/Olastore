@@ -123,7 +123,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     </>;
   }
 
-     const Loading = () => {
+    const Loading = () => {
         return (
             <LoadingContainer> <CircularProgress style={{color: 'midnightblue'}} /> </LoadingContainer>
         )
@@ -150,13 +150,12 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography variant="h4" align="center">
-            {" "}
-            Checkout{" "}
+            Checkout
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((step) => (
               <Step key={step}>
-                <StepLabel> {step} </StepLabel>
+                <StepLabel style={{color: 'midnightblue'}}> {step} </StepLabel>
               </Step>
             ))}
           </Stepper>

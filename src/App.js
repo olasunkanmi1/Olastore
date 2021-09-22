@@ -84,7 +84,7 @@ const App = () => {
       />
       <Switch>
         <Route exact path="/">
-          <Products products={products} addToCart={addProduct} />
+          <Products products={products} addToCart={addProduct} removeFromCart={removeFromCart} />
         </Route>
 
         <Route exact path="/cart">

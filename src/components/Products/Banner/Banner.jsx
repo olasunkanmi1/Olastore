@@ -116,7 +116,7 @@ const Arrow = styled(BsArrowRightShort)`
 const Banner = () => {
     useEffect(() => {
         Aos.init({
-            duration: 1000,
+            duration: 1500,
         });
     }, []);
 

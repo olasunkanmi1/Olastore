@@ -64,7 +64,7 @@ const LoadingContainer = styled.div`
     height: 200px;
 `
 
-const Products = ({ products, addToCart }) => {
+const Products = ({ products, addToCart, removeFromCart }) => {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'auto'});
     }, [])
@@ -79,7 +79,7 @@ const Products = ({ products, addToCart }) => {
         return (
             <Container id='shopping'>
                 {products.map((product) => (
-                    <Product product={product} addToCart={addToCart} />
+                    <Product product={product} addToCart={addToCart} removeFromCart={removeFromCart} />
                 ))}
             </Container>
         )

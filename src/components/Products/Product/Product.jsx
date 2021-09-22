@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdAddShoppingCart } from 'react-icons/md'
 import styled from 'styled-components/macro';
 
-import Aos from 'aos'
-import 'aos/dist/aos.css'
+// import Aos from 'aos'
+// import 'aos/dist/aos.css'
 
 //styles
 const Container = styled.div`
@@ -82,6 +82,12 @@ const Button = styled.div`
         background: midnightblue;
         color: #fff;
     }
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 const AddCart = styled(MdAddShoppingCart)`
@@ -89,13 +95,19 @@ const AddCart = styled(MdAddShoppingCart)`
     font-size: 20px;
 `
 
-const Product = ({ product, addToCart }) => {
+const Product = ({ product, addToCart, removeFromCart }) => {
+    const [addRemove, setAddRemove] = useState(false);
+
+    const changeBtn = () => {
+        setAddRemove(!addRemove);
+    }
+
     useEffect(() => {
-        Aos.init({duration: 1500});
+        // Aos.init({duration: 1000});
     }, [])
 
     return (
-        <Container data-aos='fade-up'>
+        <Container >
             <Card>
                 <Media>
                     <img src={product.media.source} alt="product" />
@@ -108,8 +120,12 @@ const Product = ({ product, addToCart }) => {
                         
                     <h4>{product.price.formatted_with_symbol}</h4>
 
-                    <Button aria-label='Add to Cart' onClick={() => addToCart(product.id, 1)}>
-                        <AddCart /> ADD TO CART
+                    <Button aria-label='Add to Cart' onClick={() => changeBtn()}>
+                        {addRemove ? (
+                            <div onClick={ () => removeFromCart(product.id) }>REMOVE FROM CART</div>) 
+                            : (
+                            <div onClick={() => addToCart(product.id, 1)}><AddCart /> ADD TO CART</div>)
+                        }
                     </Button>
                 </Content>
             </Card>
