@@ -60,6 +60,10 @@ const AddressForm = ({ checkoutToken, next }) => {
         if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
     }, [shippingSubdivision]);
 
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: 'auto'})
+    }, [])
+
     return (     
         <>
             <Typography variant='h6' gutterBottom>Shipping Address</Typography>

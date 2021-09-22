@@ -71,7 +71,7 @@ const Products = ({ products, addToCart }) => {
 
     const Loading = () => {
         return (
-            <LoadingContainer> <CircularProgress /> </LoadingContainer>
+            <LoadingContainer> <CircularProgress style={{color: 'midnightblue'}} /> </LoadingContainer>
         )
     }
 

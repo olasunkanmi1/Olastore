@@ -11,6 +11,7 @@ import {
   CssBaseline,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
+import styled from 'styled-components/macro';
 
 import { commerce } from "../../../lib/Commerce";
 
@@ -20,6 +21,14 @@ import PaymentForm from "../PaymentForm";
 import useStyles from "./styles";
 
 const steps = ["Shipping Address", "Payment Details"];
+
+//styles
+const LoadingContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+`
 
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const classes = useStyles();
@@ -41,13 +50,17 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         console.log(token);
         setCheckoutToken(token);
       } catch (error) {
-        history.pushState("/");
+        // history.pushState("/");
         console.log(error);
       }
     };
 
     generateToken();
   }, [cart]);
+
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: 'auto'})
+    }, [])
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const prevStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -110,9 +123,15 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     </>;
   }
 
+     const Loading = () => {
+        return (
+            <LoadingContainer> <CircularProgress style={{color: 'midnightblue'}} /> </LoadingContainer>
+        )
+    }
+
   const Form = () =>
     activeStep === 0 ? (
-      <AddressForm checkoutToken={checkoutToken} next={next} />
+        <AddressForm checkoutToken={checkoutToken} next={next} />
     ) : (
       <PaymentForm
         shippingData={shippingData}
@@ -143,7 +162,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           </Stepper>
           {activeStep === steps.length ? (
             <Confirmation />
-          ) : (
+          ) : (!checkoutToken ? <Loading /> :
             checkoutToken && <Form />
           )}
         </Paper>

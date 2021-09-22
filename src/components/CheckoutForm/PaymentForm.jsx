@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Typography, Button, Divider, CircularProgress } from '@material-ui/core';
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -40,6 +40,10 @@ const PaymentForm = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptur
       nextStep();
     }
   };
+
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'auto'})
+  }, [])
 
   return (
     <>
