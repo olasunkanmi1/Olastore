@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Paper,
+//   Paper,
   Stepper,
   Step,
   StepLabel,
@@ -28,6 +28,39 @@ const LoadingContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 100px;
+`
+
+const Container = styled.section`
+    margin-top: 75px;
+    padding: 1rem 12rem;
+
+    @media screen and (max-width: 1200px) {
+        padding: 1rem 10rem;
+    }
+    @media screen and (max-width: 1000px) {
+        padding: 1rem 8rem;
+    }
+    @media screen and (max-width: 920px) {
+        padding: 1rem 6rem;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 1rem 5rem;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 1rem 4rem;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 1rem 3rem;
+    }
+    @media screen and (max-width: 450px) {
+        padding: 1rem 2rem;
+    }
+`
+
+const Wrapper = styled.div`
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 2rem 1rem;
 `
 
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
@@ -144,14 +177,10 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     );
 
   return (
-    <>
-      <CssBaseline />
-      <div className={classes.toolbar} />
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Typography variant="h4" align="center">
-            Checkout
-          </Typography>
+    <Container>
+        <Wrapper>
+          <h1 style={{textAlign: 'center'}}>Checkout</h1>
+
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((step) => (
               <Step key={step}>
@@ -164,9 +193,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           ) : (!checkoutToken ? <Loading /> :
             checkoutToken && <Form />
           )}
-        </Paper>
-      </main>
-    </>
+        </Wrapper>
+    </Container>
   );
 };
 
