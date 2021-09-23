@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
-//   Paper,
   Stepper,
   Step,
   StepLabel,
   Typography,
   CircularProgress,
   Divider,
-  Button,
-  CssBaseline,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import styled from 'styled-components/macro';
@@ -61,6 +58,17 @@ const Wrapper = styled.div`
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 2rem 1rem;
+`
+
+const Button = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid midnightblue;
+    color: midnightblue;
+    width: 150px;
 `
 
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
@@ -123,7 +131,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           </Typography>
         </div>
         <br />
-        <Button variant="outlined" type="button" component={Link} to="/">
+        <Button to="/">
           Back to Home
         </Button>
       </>
@@ -136,7 +144,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
                 <Divider className={classes.divider} />
             </div>
             <br />
-            <Button variant="outlined" type="button" component={Link} to="/">
+            <Button to="/">
             Back to Home
             </Button>
         </>
@@ -150,7 +158,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     <>
       <Typography variant="h5">Error: ${error}</Typography>
       <br />
-      <Button variant="outlined" type="button" component={Link} to="/">
+      <Button to="/">
         Back to Home
       </Button>
     </>;

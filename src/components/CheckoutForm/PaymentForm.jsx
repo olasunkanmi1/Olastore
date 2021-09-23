@@ -1,9 +1,36 @@
 import React, { useEffect } from 'react';
-import { Typography, Button, Divider, CircularProgress } from '@material-ui/core';
+import { Typography, Divider, } from '@material-ui/core';
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import styled, { css } from 'styled-components/macro';
 
 import Review from './Review';
+
+//styles
+const Button = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+`
+
+const Back = styled.div`
+    ${Button};
+    border: 2px solid midnightblue;
+    color: midnightblue;
+`
+
+const Next = styled.button`
+    ${Button};
+    background: midnightblue;
+    outline: none;
+    border: none;
+    color: #fff;
+`
+
+
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -56,10 +83,10 @@ const PaymentForm = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptur
             <CardElement />
             <br /> <br />
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button variant="outlined" onClick={prevStep}>Back</Button>
-              <Button type="submit" variant="contained" disabled={!stripe} color="primary">
+              <Back onClick={prevStep}>Back</Back>
+              <Next type="submit" disabled={!stripe}>
                 Pay {checkoutToken.live.subtotal.formatted_with_symbol}
-              </Button>
+              </Next>
             </div>
           </form>
         )}
