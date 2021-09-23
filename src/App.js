@@ -77,6 +77,7 @@ const App = () => {
     <Router>
       <GlobalStyles />
       <Navbar 
+        totalUniqueItems={cart.total_unique_items}
         totalItems={cart.total_items} 
         totalCost={(cart.subtotal &&
                     cart.subtotal.formatted_with_symbol) ||

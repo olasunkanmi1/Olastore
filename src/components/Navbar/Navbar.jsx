@@ -86,7 +86,7 @@ const Tag = styled.div`
     font-size: 10px;
 `
 
-const Navbar = ({ totalItems, totalCost }) => {
+const Navbar = ({ totalUniqueItems, totalItems, totalCost }) => {
     const location = useLocation();
 
     return (
@@ -100,7 +100,7 @@ const Navbar = ({ totalItems, totalCost }) => {
                     <Button aria-label='Show Cart Items' to="/cart" className='btn'>
                         <Cart className='cart' />
                         <h3 className='h3'>cart</h3>
-                        <Tag>{totalItems}</Tag>
+                        <Tag>{totalUniqueItems}</Tag>
                     </Button>) : (
                     <h4>
                         Total: {totalCost}
