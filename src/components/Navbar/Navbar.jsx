@@ -43,11 +43,7 @@ const Container = styled.section`
     }
 
     h4 {
-        @media screen and (max-width: 320px) {
-            font-size: 13px;
-        }
-        
-        @media screen and (max-width: 290px) {
+         @media screen and (max-width: 330px) {
             font-size: 11px;
         }
     }
