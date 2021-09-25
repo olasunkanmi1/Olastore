@@ -96,7 +96,7 @@ const AddCart = styled(MdAddShoppingCart)`
 `
 
 const Product = ({ product, addToCart, removeFromCart }) => {
-    const [addRemove, setAddRemove] = useState(false);
+    // const [addRemove, setAddRemove] = useState(false);
 
     const changeBtn = () => {
         setAddRemove(!addRemove);
@@ -120,12 +120,8 @@ const Product = ({ product, addToCart, removeFromCart }) => {
                         
                     <h4>{product.price.formatted_with_symbol}</h4>
 
-                    <Button aria-label='Add to Cart' onClick={() => changeBtn()}>
-                        {addRemove ? (
-                            <div onClick={ () => removeFromCart(product.id) }>REMOVE FROM CART</div>) 
-                            : (
-                            <div onClick={() => addToCart(product.id, 1)}><AddCart /> ADD TO CART</div>)
-                        }
+                    <Button aria-label='Add to Cart' onClick={() => addToCart(product.id, 1)}>
+                        <div ><AddCart /> ADD TO CART</div>
                     </Button>
                 </Content>
             </Card>
