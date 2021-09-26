@@ -48,9 +48,9 @@ const App = () => {
   }
 
   const refreshCart = async () => {
-    const newCart = await commerce.cart.refresh();
+    const response = await commerce.cart.refresh();
 
-    setCart(newCart);
+    setCart(response);
   }
 
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
@@ -103,6 +103,7 @@ const App = () => {
             order={order}
             onCaptureCheckout={handleCaptureCheckout}
             error={errorMessage}
+            emptyCart={emptyCart}
           />
         </Route>
       </Switch>

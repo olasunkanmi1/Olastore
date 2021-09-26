@@ -21,7 +21,7 @@ const Circle = styled.div`
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: midnightblue;
+    background: green;
 `
 
 const Check = styled(GiCheckMark)`
