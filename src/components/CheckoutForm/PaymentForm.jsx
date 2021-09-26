@@ -42,7 +42,7 @@ const Next = styled.button`
     @media screen and (max-width: 310px) {
       width: 100%;
       margin-top: 20px;
-  }
+    }
 `
 
 

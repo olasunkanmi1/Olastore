@@ -58,6 +58,10 @@ const Wrapper = styled.div`
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 2rem 1rem;
+
+    @media screen and (max-width: 300px) {
+      padding: 2rem .5rem;
+    }
 `
 
 const Button = styled(Link)`
@@ -91,7 +95,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         console.log(token);
         setCheckoutToken(token);
       } catch (error) {
-        // history.pushState("/");
+        history.pushState("/");
         console.log(error);
       }
     };

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/macro';
 import box from '../../assets/box.png'
 import CartItem from './CartItem/CartItem';
 import { Link } from "react-router-dom";
+import { CircularProgress } from "@material-ui/core";
 
 //styles
 const EmptyCartContainer = styled.div`
@@ -250,6 +251,14 @@ const CheckBtn = styled(Link)`
     background: midnightblue;
 `
 
+const LoadingContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    marging-top: 75px;
+    height: 300px;
+`
+
 const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     // const isEmpty = !cart.line_items.length; //meaning cart is 0. same as cart.line_items.length == 0;
     useEffect(() => {
@@ -268,6 +277,7 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
     };
     
     const FilledCart = () => {
+
         return (
             <FilledCartContainer>
                 <h2>Your Shopping Cart ({cart.total_unique_items} { cart.total_unique_items < 2 ? 'Item' : 'Items'})</h2>
@@ -301,8 +311,14 @@ const Cart = ({ cart, updateProductQty, removeFromCart, emptyCart }) => {
             </FilledCartContainer>
         )
     };
+    
+    const Loading = () => {
+        return (
+            <LoadingContainer> <CircularProgress style={{color: 'midnightblue'}} /> </LoadingContainer>
+        )
+    }
 
-    if(!cart.line_items) return 'Loading...';
+    if(!cart.line_items) return <Loading />;
 
     return (
         <Container>
