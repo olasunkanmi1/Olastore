@@ -10,6 +10,15 @@ import { commerce } from '../../lib/Commerce';
 import FormInput from './CustomTextField';
 
 //styles
+const Btns = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 330px) {
+        display: block;
+    }
+`
+
 const Button = css`
     display: flex;
     justify-content: center;
@@ -17,6 +26,7 @@ const Button = css`
     padding: 10px;
     cursor: pointer;
     border-radius: 3px;
+    font-size: 15px;
 `
 
 const Back = styled(Link)`
@@ -31,6 +41,12 @@ const Next = styled.button`
     outline: none;
     border: none;
     color: #fff;
+    padding: 10px 20px;
+
+    @media screen and (max-width: 330px) {
+        width: 100%;
+        margin-top: 20px;
+    }
 `
 
 const AddressForm = ({ checkoutToken, next }) => {
@@ -137,10 +153,10 @@ const AddressForm = ({ checkoutToken, next }) => {
 
                     </Grid>
                     <br />
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <Btns>
                         <Back to='/cart'>Back to Cart</Back>
                         <Next type='submit'>NEXT</Next>
-                    </div>
+                    </Btns>
                 </form>
             </FormProvider>
         </>

@@ -7,6 +7,15 @@ import styled, { css } from 'styled-components/macro';
 import Review from './Review';
 
 //styles
+const Btns = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 310px) {
+        display: block;
+    }
+`
+
 const Button = css`
     display: flex;
     justify-content: center;
@@ -14,6 +23,7 @@ const Button = css`
     padding: 10px;
     cursor: pointer;
     border-radius: 3px;
+    font-size: 15px;
 `
 
 const Back = styled.div`
@@ -28,6 +38,11 @@ const Next = styled.button`
     outline: none;
     border: none;
     color: #fff;
+
+    @media screen and (max-width: 310px) {
+      width: 100%;
+      margin-top: 20px;
+  }
 `
 
 
@@ -82,12 +97,12 @@ const PaymentForm = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptur
           <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
             <CardElement />
             <br /> <br />
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Btns>
               <Back onClick={prevStep}>Back</Back>
               <Next type="submit" disabled={!stripe}>
                 Pay {checkoutToken.live.subtotal.formatted_with_symbol}
               </Next>
-            </div>
+            </Btns>
           </form>
         )}
         </ElementsConsumer>
