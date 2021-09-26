@@ -49,7 +49,7 @@ const Next = styled.button`
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-const PaymentForm = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptureCheckout, timeout }) => {
+const Payment = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptureCheckout, timeout }) => {
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
 
@@ -111,4 +111,4 @@ const PaymentForm = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptur
   );
 };
 
-export default PaymentForm;
+export default Payment;

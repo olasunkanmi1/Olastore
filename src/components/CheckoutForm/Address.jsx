@@ -49,7 +49,7 @@ const Next = styled.button`
     }
 `
 
-const AddressForm = ({ checkoutToken, next }) => {
+const Address = ({ checkoutToken, next }) => {
     const methods = useForm();
 
     const [shippingCountries, setShippingCountries] = useState([]);
@@ -163,4 +163,4 @@ const AddressForm = ({ checkoutToken, next }) => {
     )
 }
 
-export default AddressForm
+export default Address;

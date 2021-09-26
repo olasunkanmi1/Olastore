@@ -100,7 +100,7 @@ const Navbar = ({ totalUniqueItems, totalItems, totalCost }) => {
                     <Button aria-label='Show Cart Items' to="/cart" className='btn'>
                         <Cart className='cart' />
                         <h3 className='h3'>cart</h3>
-                        <Tag>{totalUniqueItems}</Tag>
+                        { !totalItems ? (null) : (<Tag>{totalItems}</Tag>)}
                     </Button>) : (
                     <h4>
                         Total: {totalCost}

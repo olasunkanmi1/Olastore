@@ -12,8 +12,9 @@ import styled from 'styled-components/macro';
 
 import { commerce } from "../../../lib/Commerce";
 
-import AddressForm from "../AddressForm";
-import PaymentForm from "../PaymentForm";
+import Address from "../Address";
+import Payment from "../Payment";
+import Success from "../Success";
 
 import useStyles from "./styles";
 
@@ -95,7 +96,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         console.log(token);
         setCheckoutToken(token);
       } catch (error) {
-        history.pushState("/");
+        history.push("/");
         console.log(error);
       }
     };
@@ -142,10 +143,9 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     ) : isFinished ? (
         <>
             <div>
-                <Typography variant="h5">
-                    Thank you for your purchase
-                </Typography>
+                <Success />
                 <Divider className={classes.divider} />
+                <h3>Thank You For Your Patronage!</h3>
             </div>
             <br />
             <Button to="/">
@@ -176,9 +176,9 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
   const Form = () =>
     activeStep === 0 ? (
-        <AddressForm checkoutToken={checkoutToken} next={next} />
+        <Address checkoutToken={checkoutToken} next={next} />
     ) : (
-      <PaymentForm
+      <Payment
         shippingData={shippingData}
         checkoutToken={checkoutToken}
         prevStep={prevStep}
