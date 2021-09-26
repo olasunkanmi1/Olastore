@@ -98,9 +98,9 @@ const AddCart = styled(MdAddShoppingCart)`
 const Product = ({ product, addToCart, removeFromCart }) => {
     // const [addRemove, setAddRemove] = useState(false);
 
-    const changeBtn = () => {
-        setAddRemove(!addRemove);
-    }
+    // const changeBtn = () => {
+    //     setAddRemove(!addRemove);
+    // }
 
     useEffect(() => {
         // Aos.init({duration: 1000});
