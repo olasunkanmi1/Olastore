@@ -49,7 +49,7 @@ const Next = styled.button`
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-const Payment = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptureCheckout, timeout, emptyCart }) => {
+const Payment = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptureCheckout, timeout, refreshCart}) => {
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
 
@@ -80,8 +80,9 @@ const Payment = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptureChe
       timeout();
 
       nextStep();
-    }
-  };
+
+
+  }};
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'auto'})
@@ -96,7 +97,9 @@ const Payment = ({ checkoutToken, nextStep, prevStep, shippingData, onCaptureChe
         <ElementsConsumer>{({ elements, stripe }) => (
           <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
             <CardElement />
-            <em style={{fontSize: '13px', marginTop: '10px', color: '#bbb' }}>Use the test card number 4242 4242 4242 4242 and a random expiration date with three-digit CVC number</em>
+            <div style={{paddingTop: '15px'}}>
+              <em style={{fontSize: '13px', color: '#bbb' }}>Use the test card number 4242 4242 4242 4242 and a random expiration date with three-digit CVC number</em>
+            </div>
             <br /> <br />
             <Btns>
               <Back onClick={prevStep}>Back</Back>

@@ -30,9 +30,11 @@ const Check = styled(GiCheckMark)`
     height: 70%;
 `
 
-const Success = () => {
+const Success = ({ refreshCart }) => {
     useEffect(() => {
-        window.scrollTo({top: 0, behavior: 'auto'})
+        window.scrollTo({top: 0, behavior: 'auto'});
+
+        refreshCart();
     }, []);
 
     return (

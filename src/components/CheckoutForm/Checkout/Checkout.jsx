@@ -76,7 +76,7 @@ const Button = styled(Link)`
     width: 150px;
 `
 
-const Checkout = ({ cart, order, onCaptureCheckout, error, emptyCart }) => {
+const Checkout = ({ cart, order, onCaptureCheckout, error, refreshCart }) => {
   const classes = useStyles();
 
   const [activeStep, setActiveStep] = useState(0);
@@ -96,7 +96,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error, emptyCart }) => {
         console.log(token);
         setCheckoutToken(token);
       } catch (error) {
-        history.push("/");
+        // history.push("/");
         console.log(error);
       }
     };
@@ -128,7 +128,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error, emptyCart }) => {
       <>
         <div>
           <Typography variant="h5">
-            Thank you for your purchase, {order.customer.firstName} {order.customer.lastName}
+            Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}
           </Typography>
           <Divider className={classes.divider} />
           <Typography variant="subtitle2">
@@ -143,7 +143,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error, emptyCart }) => {
     ) : isFinished ? (
         <>
             <div>
-                <Success />
+                <Success refreshCart={refreshCart} />
                 <Divider className={classes.divider} />
                 <h3>Thank You For Your Patronage!</h3>
             </div>
@@ -185,7 +185,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error, emptyCart }) => {
         nextStep={nextStep}
         onCaptureCheckout={onCaptureCheckout}
         timeout={timeout}
-        emptyCart={emptyCart}
+        refreshCart={refreshCart}
       />
     );
 
